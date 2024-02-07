@@ -17,15 +17,25 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
+  const router = express.Router();
+
+  router.get('/content', (req, res) => {
+    res.status(200).json({ message: 'Hello from the server!' });
+  });
+
   // Example Express Rest API endpoints
-  // server.get('/api/**', (req, res) => { });
+  server.use('/expressapi', router);
   // Serve static files from /browser
-  server.get('*.*', express.static(browserDistFolder, {
-    maxAge: '1y'
-  }));
+  server.get(
+    '*.*',
+    express.static(browserDistFolder, {
+      maxAge: '1y',
+    })
+  );
 
   // All regular routes use the Angular engine
   server.get('*', (req, res, next) => {
+    console.log('CALLING SERVER');
     const { protocol, originalUrl, baseUrl, headers } = req;
 
     commonEngine

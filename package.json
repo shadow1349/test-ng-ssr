@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:test-ngssr": "node dist/test-ngssr/server/server.mjs"
+    "serve:ssr:test-ngssr": "npm run build && node dist/test-ngssr/server/server.mjs"
   },
   "private": true,
   "dependencies": {
