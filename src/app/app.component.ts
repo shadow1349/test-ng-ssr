@@ -18,8 +18,8 @@ export class AppComponent {
     @Inject(PLATFORM_ID) private platformId: string
   ) {
     console.log(isPlatformServer(this.platformId));
-    // this.content.getContet().subscribe((data) => {
-    //   console.log('GOT DATA: ', data);
-    // });
+    this.content.getContet().subscribe((data) => {
+      console.log('GOT DATA: ', data);
+    });
   }
 }

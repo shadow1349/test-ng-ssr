@@ -24,7 +24,7 @@ export function app(): express.Express {
   });
 
   // Example Express Rest API endpoints
-  server.use('/expressapi', router);
+  server.use('/api/*', router);
   // Serve static files from /browser
   server.get(
     '*.*',
